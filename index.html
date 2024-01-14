@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <title>Pranav Ghosh's Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container{
+            height: 100vh;
+            width: 100vw;
+            background: #293241;
+            overflow-y: auto;
+        }
+
+        .header{
+            width: 1400px;
+            height: 80px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 5%;
+        }
+
+        .header.shadow {
+            box-shadow: 0 4px 6px -6px #222;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .logo h1{
+            font-size: 25px;
+            color: #98c1d9;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+
+        .logo span{
+            color: #e0fbfc;
+        }
+
+
+        #navbar {
+        background-color: #293241;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            gap: 50px;
+        }
+
+        .nav-links ul li a{
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: #e0fbfc;
+            transition: 0.4s;
+        }
+
+        .nav-links ul li a:hover{
+            color: #98c1d9;
+            font-size: 25px;
+        }
+
+        .section{
+            padding: 30px 5%;
+        }
+
+        .btn{
+            padding: 10px 20px;
+            color: #e0fbfc;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            background: #3d5a80;
+            border-radius: 30px;
+            box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 4px, 
+            rgba(0, 0, 0, 0.4) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            transition: 0.4s;
+            font-weight: 600;
+        }
+
+        .btn-primary{
+            margin-left: 100px;
+            color: #3d5a80;
+            background: #e0fbfc;
+        }
+
+        .btn:hover{
+            scale: 105%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        }
+
+        .main-content{
+            width: 100%;
+            height: 100%;
+            padding-top: 180px;
+            
+        }
+
+        .main{
+            position: relative;
+            width: 1400px;
+            height: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 5%;
+        }
+
+        .line{
+            width: 80px;
+            border-bottom: 8px solid #ee6c4d;
+            margin-bottom: 30px;
+        }
+
+        .main h1{
+            
+            font-size: 50px;
+            color: #98c1d9;
+            line-height: 1;
+        }
+
+        .main h2{
+        font-size: 40px; 
+        color: #98c1d9;
+        margin-bottom: 50px;
+        }
+
+        .main span{
+            color: #ee6c4d;
+        }
+
+        .main p{
+            width: 700px;
+            font-size: 18px;
+            color: #e0fbfc;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+
+        }
+
+        .right{
+            /* position: relative; */
+        }
+
+        .image{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 50px solid #ee6c4d;
+            z-index: 8888;
+            animation: anim 3s linear infinite;
+        }
+
+        @keyframes anim{
+            0%{
+                top: 0;
+            }
+            50%{
+                top: -10px;
+            }
+            100%{
+                top: 0;
+            }
+        }
+
+        .image img{
+            margin-top: -79px;
+            margin-left: 5px;
+            width: 200px;
+            scale: 140%;
+        }
+
+        /* -- ## --- RESUABLE CSS -- ## -- */
+        .top-header{
+            text-align: center;
+
+        }
+        .top-header h1{
+            font-weight: 600;
+            color: #e0fbfc;
+            margin-bottom: 10px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px 5%;
+        }
+
+        /* Style for each skill container */
+        .skill-container {
+            background-color: #293241;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .skill-container h2 {
+            text-align: center;
+            color: #e0fbfc;
+            margin: 20px 0; /* Adjust the margin as needed */
+        }
+
+        .skills-list{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        .skills-list span{
+            font-size: 14px;
+            background: #ee6c4d;
+            color: #e0fbfc;
+            padding: 2px 10px;
+            border-radius: 5px;
+        }
+
+        /* Style for each project container */
+
+        .project-container{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px 5%;
+        }
+        .project-box{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 30%;
+            height: 250px;
+            background: #3d5a80;
+            border-radius: 20px;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            overflow: hidden;
+            color: #98c1d9;
+        }
+
+        .project-box h2{
+            font-size: 25px;
+            color: #ee6c4d;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .project-box label{
+            font-size: 15px;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .project-box::after, .contact-info::after{
+            content: "";
+            position: absolute;
+            bottom: -100%;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+            transition: .4s;
+            z-index: 1;
+        }
+        .project-box:hover.project-box::after,
+        .contact-info:hover.contact-info::after{
+            bottom: 0;
+        }
+        
+
+        .project-box:hover.project-box>h2{
+            color: #ee6c4d;
+            z-index: 2;
+        }
+
+        .project-box:hover.project-box>label{
+            color: #3d5a80;
+            z-index: 2;
+        }
+
+        /* Style for each internship and experience container */
+
+        .internship-container{
+            background-color: #293241;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .internship-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background: #3d5a80;
+            border-radius: 20px;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            overflow: hidden;
+            color: #98c1d9;
+        }
+
+        .internship-box h2{
+            font-size: 25px;
+            color: #ee6c4d;
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .internship-box p{
+            font-size: 18px;
+            color: #e0fbfc;
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 10px;
+        }
+
+
+
+        /* Style for each footer container */
+
+        footer {
+            background-color: #293241;
+            color: #ee6c4d;
+            text-align: center;
+            padding: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- --------------- NAVIGATION BAR --------------- -->
+        <nav class="header" id="navbar">
+            <div class="logo">
+                <h1>Pranav<span>Ghosh</span></h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#product">Products</a></li>
+                </ul>
+            </div>
+            <a href="https://www.linkedin.com/in/pranavghosh19/" class="btn btn-primary">Let's Connect</a>
+        </nav>
+        <!-- --------------- MAIN --------------- -->
+        <div class="main-content" id="about">
+            <div class="main">
+                <div class="left">
+                    <div class="line"></div>
+                    <h1>Hi there! I'm Pranav Ghosh</h1>
+                    <h2>A <span class="auto-type"></span> </h2>
+                    <p>I'm a Business Intelligence Analyst passionate about turning data into actionable strategies. With skills in SQL, Python, Tableau, and Power BI, I create insightful data stories that fuel smart decision-making. From cleaning to machine learning, I specialize in analysis, visualization, and reporting. Let's unlock the power of information together!</p>
+                    <a href="https://www.linkedin.com/in/pranavghosh19/" class="btn">Hire Me</a>
+                    <a href="#" class="btn btn-primary">Download CV</a>
+                </div>
+                <div class="right">
+                    <div class="image">
+                        <img src="#" alt="">
+                    </div>
+                </div>               
+            </div>
+
+            <!-- -------------- SKILLS BOX ---------------- -->
+
+            <section class="section" id="skills">
+                <div class="top-header">
+                    <h1>Skills</h1>
+                </div>
+                <div class="skills">
+                    <div class="skill-container">
+                        <h2>Technical</h2>
+                        <div class="skills-list">
+                            <span>SQL</span>
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>Deep Learning</span>
+                        </div>
+                    </div>
+                    <div class="skill-container">
+                        <h2>Data Visualizations</h2>
+                        <div class="skills-list">
+                            <span>Power BI</span>
+                            <span>Tableau</span>
+                            <span>Google Speardsheets</span>
+                            <span>Advanced Excel</span>
+                        </div>
+                    </div>
+                    <div class="skill-container">
+                        <h2>Designs</h2>
+                        <div class="skills-list">
+                            <span>Figma</span>
+                            <span>Microsoft Suite</span>
+                            <span>Canva</span>
+                            <span>Cohoom (3D Rendering)</span>
+                        </div>
+                    </div>   
+                </div>             
+            </section>
+
+            <!-- -------------- PROJECTS BOX ---------------- -->
+
+            <section class="section" id="project">
+                <div class="top-header">
+                    <h1>Projects</h1>
+                </div>
+                <div class="project-container">
+                    <div class="project-box">
+                        <h2>URL Gaurd: Malware Detection and Classification</h2>
+                        <label>Machine Learning Algorithms</label>
+                        <label>Gradient Decent | Decision Tree | XGBoosrt</label>
+                    </div>
+                    <div class="project-box">
+                        <h2>Power BI Dashboards</h2>
+                        <label>Reports and Insights</label>
+                    </div>
+                    <div class="project-box">
+                        <h2>Movie Recommendation System</h2>
+                        <label>Deep Learning Algorithm</label>
+                        <label>Convolutional Neural Network</label>
+                    </div>
+                    <div class="project-container">
+                    <div class="project-box">
+                        <h2>The Eye: Attendence Automatic System</h2>
+                        <label>Internet of Things</label>
+                    </div>
+                    <div class="project-box">
+                        <h2>Excel and SQL</h2>
+                        <label>Google Spreadsheets | SQL</label>
+                    </div>
+                    <div class="project-box">
+                        <h2>Case Studies</h2>
+                        <label>Machine Learning Algorithms</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- -------------- INTERNSHIPS AND EXPERIENCES BOX ---------------- -->
+
+            <section class="section" id="internships">
+                <div class="top-header">
+                    <h1>Internships and Experience</h1>
+                </div>
+                <div class="project-container">
+                    <div class="internship-box">
+                        <h2>Event Executive</h2>
+                        <label></label>
+                    </div>
+                    <div class="internship-box">
+                        <h2>Game Curator and Tester</h2>
+                        <label></label>
+                    </div>
+            </section>
+
+            <!-- -------------- PRODUCT BOX ---------------- -->
+
+            <section class="section" id="product">
+                <div class="top-header">
+                    <h1>Product</h1>
+                </div>
+                <div class="project-container">
+                    <div class="product-box">
+                        <h2>Something new is coming up</h2>
+                        <p>Stay Tuned!!!</p>
+                    </div>
+            </section>
+
+            <!-- -------------- FOOTER BOX ---------------- -->
+
+            <footer class="footer">
+                <p>Created by Pranav Ghosh!</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <script>
+        /* ----- TYPING EFFECT ----- */
+        var typed = new Typed(".auto-type", {
+            strings:["Data Analyst", "Business Analyst", "Business Intelligence"],
+            typeSpeed:50,
+            backSpeed:50,
+            loop:true
+        });
+    </script>
+</body>
+</html>
