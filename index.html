@@ -161,7 +161,7 @@
         }
 
         .right{
-            /* position: relative; */
+            z-index: 1;
         }
 
         .image{
@@ -170,8 +170,10 @@
             height: 500px;
             border-radius: 50%;
             border: 50px solid #ee6c4d;
-            z-index: 8888;
+            z-index: 1;
             animation: anim 3s linear infinite;
+            object-fit: cover;
+            overflow: hidden;
         }
 
         @keyframes anim{
@@ -187,10 +189,10 @@
         }
 
         .image img{
-            margin-top: -79px;
-            margin-left: 5px;
-            width: 200px;
-            scale: 140%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         /* -- ## --- RESUABLE CSS -- ## -- */
@@ -278,6 +280,19 @@
             padding: 10px;
             text-align: center;
         }
+
+        .link {
+            display: none;
+            font-size: 24px; /* Adjust the font size as needed */
+
+        }
+
+        .project-box:hover .link {
+            display: inline-block;
+            color: #000000;
+            z-index: 2;
+        }
+
         .project-box::after, .contact-info::after{
             content: "";
             position: absolute;
@@ -293,15 +308,21 @@
             bottom: 0;
         }
         
-
         .project-box:hover.project-box>h2{
             color: #ee6c4d;
             z-index: 2;
         }
 
         .project-box:hover.project-box>label{
-            color: #3d5a80;
+            display: none;
             z-index: 2;
+        }
+
+        .project-box:hover.project-box> a {
+            color: #000000;
+            z-index: 2;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         /* Style for each internship and experience container */
@@ -330,18 +351,130 @@
         .internship-box h2{
             font-size: 25px;
             color: #ee6c4d;
-            margin-bottom: 25px;
+            margin: 10px;
             text-align: center;
-            padding: 30px;
+            padding: 10px;
         }
 
         .internship-box p{
             font-size: 18px;
             color: #e0fbfc;
-            margin-bottom: 25px;
-            text-align: center;
+            margin: 10px;
             padding: 10px;
         }
+        
+        .responsibilities-header {
+            text-align: end;
+        }
+
+        .bullet-list {
+            list-style-position: outside; /* Align the bullets to the left */
+            padding: 5px; /* Adjust the left padding as needed */
+            margin: 5px;
+        }
+
+        .product-box {
+            border-radius: 20px;
+            color: #e0fbfc;
+            background-color: #3d5a80;
+            margin: 5px;
+            padding: 5px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column;
+        }
+
+
+        .product-details {
+            margin: 10px;
+            padding: 10px;
+            align-items: center;
+        }
+
+
+        .faker-phone {
+            position: relative;
+            background: #2d3436;
+            width: calc(76px * 4);
+            height: calc(138px * 4.5);
+            padding: 60px 15px 70px;
+            border-radius: 35px;
+            box-sizing: border-box;
+        }
+
+        .faker-phone::before {
+            position: absolute;
+            top: 27px;
+            left: 50%;
+            margin-left: -25px;
+            width: 50px;
+            height: 6px;
+            border-radius: 3px;
+            background: #000;
+            opacity: .7;
+        }
+
+        .faker-phone::after {
+            content: '';
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            margin-left: -22px;
+            height: 40px;
+            width: 40px;
+            background: rgba(0, 0, 0, .5);
+            border: 2px solid rgba(0, 0, 0, .8);
+            border-radius: 100%;
+        }
+
+        .faker-phone--screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: auto;
+            position: relative;
+        }
+        
+        .faker-phone--screen p {
+            color: #fff;
+            animation: fadeIn 3s ease-out;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .h1 {
+            text-align: center;
+            color: #fff;
+            margin: 10px;
+            animation: fadeIn 1.5s ease-out;
+            font-size: 30px;
+        }
+        
+        @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        }
+        
+        #myPieChart {
+            margin-top: 20px;
+            padding: 5px;
+            max-width: 100%;
+            max-height: 100%;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        p span {
+            color: #4caf50; /* Green color */
+        }
+        
+    
 
 
 
@@ -349,7 +482,7 @@
 
         footer {
             background-color: #293241;
-            color: #ee6c4d;
+            color: #ffffff;
             text-align: center;
             padding: 20px;
         }
@@ -368,10 +501,9 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#project">Projects</a></li>
                     <li><a href="#internships">Internships</a></li>
-                    <li><a href="#product">Products</a></li>
                 </ul>
             </div>
-            <a href="https://www.linkedin.com/in/pranavghosh19/" class="btn btn-primary">Let's Connect</a>
+            <a href="https://www.linkedin.com/in/pranavghosh19/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Let's Connect</a>
         </nav>
         <!-- --------------- MAIN --------------- -->
         <div class="main-content" id="about">
@@ -380,13 +512,13 @@
                     <div class="line"></div>
                     <h1>Hi there! I'm Pranav Ghosh</h1>
                     <h2>A <span class="auto-type"></span> </h2>
-                    <p>I'm a Business Intelligence Analyst passionate about turning data into actionable strategies. With skills in SQL, Python, Tableau, and Power BI, I create insightful data stories that fuel smart decision-making. From cleaning to machine learning, I specialize in analysis, visualization, and reporting. Let's unlock the power of information together!</p>
-                    <a href="https://www.linkedin.com/in/pranavghosh19/" class="btn">Hire Me</a>
-                    <a href="#" class="btn btn-primary">Download CV</a>
+                    <p>I'm a Business Intelligence Analyst passionate about turning data into actionable strategies. With skills in SQL, Python, Tableau, and Power BI, I create insightful data stories that fuel smart decision-making. From data cleaning to creating machine learning alogirths, I specialize in analysis, visualization, and reporting. Let's unlock the power of information together!</p>
+                    <a href="https://www.linkedin.com/in/pranavghosh19/" target="_blank" rel="noopener noreferrer" class="btn">Hire Me</a>
+                    <a href="https://drive.google.com/file/d/1AdnHtmRzxCiTexdGGlZIioHQGPwevJdc/view?usp=sharing" target="_blank" rel="noopener noreferrer"class="btn btn-primary">Download CV</a>
                 </div>
                 <div class="right">
                     <div class="image">
-                        <img src="#" alt="">
+                        <img src="/Users/sharelmascarenhas/Desktop/Professional/Portfolio/112719362.jpeg" alt="Profile Picture">
                     </div>
                 </div>               
             </div>
@@ -423,7 +555,7 @@
                         <h2>Designs</h2>
                         <div class="skills-list">
                             <span>Figma</span>
-                            <span>Microsoft Suite</span>
+                            <span>Microsoft Office Suite</span>
                             <span>Canva</span>
                             <span>Cohoom (3D Rendering)</span>
                         </div>
@@ -442,28 +574,52 @@
                         <h2>URL Gaurd: Malware Detection and Classification</h2>
                         <label>Machine Learning Algorithms</label>
                         <label>Gradient Decent | Decision Tree | XGBoosrt</label>
+                        <a class="link" href="https://github.com/PranavGhosh19/URL-Guard-Malware-Detection-and-Classification" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a class="link" href="https://pranavghosh19.github.io/URL-Guard-Malware-Detection-and-Classification/" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        
                     </div>
                     <div class="project-box">
                         <h2>Power BI Dashboards</h2>
                         <label>Reports and Insights</label>
+                        <label>Power Query Editor | DAX Functions | ETL</label>
+                        <a class="link" href="https://www.novypro.com/project/delivery-analysis" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </a>
+
                     </div>
                     <div class="project-box">
                         <h2>Movie Recommendation System</h2>
                         <label>Deep Learning Algorithm</label>
                         <label>Convolutional Neural Network</label>
+                        <a class="link" href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                     <div class="project-container">
                     <div class="project-box">
                         <h2>The Eye: Attendence Automatic System</h2>
                         <label>Internet of Things</label>
+                        <a class="link" href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                     <div class="project-box">
                         <h2>Excel and SQL</h2>
                         <label>Google Spreadsheets | SQL</label>
+                        <a class="link" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS9JwsOxAt2AQG749-vOUiWsrZwLicig8v7KWA2mDioB7KSejAJ2NDGGAzpq6rQPyR9LFmm99X7aUP1/pubhtml?gid=1995887939&single=true" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </a>
                     </div>
                     <div class="project-box">
                         <h2>Case Studies</h2>
                         <label>Machine Learning Algorithms</label>
+                        <a class="link" href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -472,50 +628,102 @@
 
             <section class="section" id="internships">
                 <div class="top-header">
-                    <h1>Internships and Experience</h1>
+                    <h1>Internship and Experience (07 Months)</h1>
                 </div>
                 <div class="project-container">
                     <div class="internship-box">
-                        <h2>Event Executive</h2>
-                        <label></label>
+                        <h2>Event Executive (06 Months)</h2>
+                        <a href="https://kagolf.co.in/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <p>Company: K&A Golf Private Limited <i class="fas fa-external-link-alt"></i></p>
+                        </a>
+                        <p>Roles and Responsibilities</p>
+                        <ul class="bullet-list">
+                            <li>Conducted market research for 3+ in-house products and hosted golf events in 11 cities nationwide.</li>
+                            <li>Created 20+ 3D rendering models for clients' indoor setup services to support the golf-playing platform.</li>
+                            <li>Designed 30+ PowerPoint presentations for storytelling the business models & onboarding the clients.</li>
+                        </ul>
+                        <p>Tools used: Google Spreadsheets | Microsoft Office Suite | 3D Rendering (Cohoom)</p>
+                        <p><a href="https://drive.google.com/file/d/1OxrfjMVunlqzwhxqji08D4I0iEfNRHMs/view?usp=sharing" target="_blank" style="text-decoration: none; color: #ee6c4d;">Certificate <i class="fas fa-external-link-alt"></i></a></p>
                     </div>
                     <div class="internship-box">
-                        <h2>Game Curator and Tester</h2>
-                        <label></label>
+                        <h2>Game Curator and Tester Intern (01 Month)</h2>
+                        <a href="https://www.primebook.in/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+                            <p>Company: Floydwiz Technologies Private Limited (Primebook India) <i class="fas fa-external-link-alt"></i></p>
+                        </a>
+                        <p class="responsibilities-header">Roles and Responsibilities</p>
+                        <ul class="bullet-list">
+                            <li>Tested 2000+ HTML5-based games on the given software and reported 20+ bugs to improve the code.</li>
+                            <li>Performed and reported exploratory data analysis on the game data provided using google spreadsheets.</li>
+                            <li>Executed intermediate excel formulas and conditions on the gaming data to understand the latest trends.</li>
+                        </ul>
+                        <p>Tools used: Google Spreadsheets | Microsoft Excel | Software Testing</p>
+                        <p><a href="https://drive.google.com/file/d/1Nd6hXtZhpCwIynyeh7UrTktffmKEvhzm/view?usp=sharing" target="_blank" style="text-decoration: none; color: #ee6c4d;">Certificate <i class="fas fa-external-link-alt"></i></a></p>
                     </div>
             </section>
-
-            <!-- -------------- PRODUCT BOX ---------------- -->
-
-            <section class="section" id="product">
-                <div class="top-header">
-                    <h1>Product</h1>
-                </div>
-                <div class="project-container">
-                    <div class="product-box">
-                        <h2>Something new is coming up</h2>
-                        <p>Stay Tuned!!!</p>
-                    </div>
-            </section>
-
             <!-- -------------- FOOTER BOX ---------------- -->
 
             <footer class="footer">
                 <p>Created by Pranav Ghosh!</p>
+                <p>&copy; 2024 Pranav Ghosh. All rights reserved.</p>
             </footer>
         </div>
     </div>
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         /* ----- TYPING EFFECT ----- */
         var typed = new Typed(".auto-type", {
-            strings:["Data Analyst", "Business Analyst", "Business Intelligence"],
+            strings:["Data Analyst.", "Business Analyst.", "Business Intelligence.", "Data Scientist."],
             typeSpeed:50,
             backSpeed:50,
             loop:true
         });
+
+        /* ----- Pie Chart ----- */
+        const labels = ['Food', 'Travel', 'Groceries', 'Entertainment', 'Others'];
+        const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Expense',
+            data: [65, 59, 80, 81, 56],
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+            ],
+            borderWidth: 1
+        }]
+        };
+
+        const config = {
+        type: 'pie',
+        data: data,
+        options: {
+            plugins: {
+            legend: {
+                position: 'bottom',
+            },
+            },
+        },
+        };
+
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+        new Chart(ctx, config);
     </script>
 </body>
 </html>
