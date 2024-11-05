@@ -465,7 +465,195 @@
         p span {
             color: #4caf50; /* Green color */
         }
-        
+
+@media (max-width: 1200px) {
+                /* Hide the regular navigation links */
+                .nav-links {
+                    display: none;
+                }
+
+                /* Center the logo */
+                .header {
+                    justify-content: center;
+                    padding: 20px 5%;
+                }
+
+                /* Show the bottom navigation */
+                .bottom-nav {
+                    display: flex;
+                    justify-content: space-around;
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background-color: #293241;
+                    padding: 15px 0;
+                    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+                    z-index: 1000;
+                }
+
+                .bottom-nav a {
+                    color: #e0fbfc;
+                    font-size: 18px;
+                    text-decoration: none;
+                    transition: 0.3s;
+                }
+
+                .bottom-nav a:hover {
+                    color: #98c1d9;
+                    font-size: 20px;
+                }
+                .btn-primary {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px; /* Icon-only size */
+                    height: 50px;
+                    padding: 0;
+                    margin-left: 0; /* Remove extra margin */
+                    background: #e0fbfc;
+                    color: #3d5a80;
+                    border-radius: 50%; /* Make it circular */
+                    box-shadow: none; /* Simplify the shadow */
+                }
+
+                .btn-primary i {
+                    font-size: 24px; /* Increase icon size */
+                    margin-right: 0; /* No margin for icon-only view */
+                }
+
+                /* Hide the button text on smaller screens */
+                .btn-primary span {
+                    display: none;
+                }
+
+                .nav-links {
+                    display: none;
+                }
+
+                /* Hide the LinkedIn button */
+                .btn.btn-primary {
+                    display: none;
+                }
+
+                /* Add some padding to the main content to avoid overlap with the bottom navbar */
+                .main-content {
+                    padding-top: 100px; /* Reduce padding for smaller screens */
+                }
+
+                .main {
+                    width: 100%;
+                    height: auto; /* Adjust height for content */
+                    margin: 0 auto;
+                    flex-direction: column-reverse; /* Reorder the layout */
+                    justify-content: center;
+                    align-items: center;
+                    padding: 20px 5%; /* Adjust padding for smaller screens */
+                }
+
+                .line {
+                    width: 50px; /* Reduce the size of the line */
+                    border-bottom: 5px solid #ee6c4d;
+                    margin-bottom: 20px;
+                }
+
+                .main h1 {
+                    font-size: 32px; /* Reduce font size for smaller screens */
+                    color: #98c1d9;
+                    line-height: 1.2;
+                }
+
+                .main h2 {
+                    font-size: 24px; /* Reduce font size for smaller screens */
+                    color: #98c1d9;
+                    margin-bottom: 30px;
+                }
+
+                .main span {
+                    color: #ee6c4d;
+                }
+
+                .main p {
+                    width: auto; /* Make paragraph width responsive */
+                    font-size: 16px; /* Adjust font size */
+                    color: #e0fbfc;
+                    margin-bottom: 20px;
+                    letter-spacing: 0.03em;
+                    text-align: justify;
+                }
+
+                .left {
+                    width: 100%;
+                    padding: 20px; /* Adjust padding for smaller screens */
+                }
+
+                .right {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center; /* Center the image horizontally */
+                    margin-top: 20px;
+                    z-index: 1;
+                }
+
+                .image {
+                    width: 250px; /* Reduce the image size for smaller screens */
+                    height: 250px;
+                    border: 20px solid #ee6c4d; /* Adjust border size accordingly */
+                    z-index: 1;
+                    animation: anim 3s linear infinite;
+                    object-fit: cover;
+                    overflow: hidden;
+                }
+
+                @keyframes anim {
+                    0% {
+                        top: 0;
+                    }
+                    50% {
+                        top: -10px;
+                    }
+                    100% {
+                        top: 0;
+                    }
+                }
+
+                .image img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                /* Adjust the Skills section layout */
+                .skills {
+                    display: flex;
+                    flex-direction: column; /* Stack skill sections vertically */
+                    align-items: center;
+                    gap: 20px; /* Add some space between skill containers */
+                }
+
+                .skill-container h2 {
+                    font-size: 20px; /* Reduce the heading size */
+                    margin-bottom: 10px;
+                    text-align: center; /* Center-align text for smaller screens */
+                }
+
+                .skills-list {
+                    display: flex;
+                    flex-wrap: wrap; /* Wrap skills within the container */
+                    justify-content: center; /* Center skills horizontally */
+                    gap: 10px; /* Add space between skill items */
+                    text-align: center; /* Center-align text */
+                }
+
+                .skills-list span {
+                    font-size: 12px; /* Adjust font size for readability */
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    background: #ee6c4d;
+                    color: #e0fbfc;
+                }
+            }
         /* Style for each footer container */
 
         footer {
