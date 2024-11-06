@@ -555,43 +555,46 @@
 
                 /* Projects Section */
                 .project-container {
-                    display: flex;
-                    flex-direction: column; /* Stack project boxes vertically */
-                    gap: 20px; /* Add space between project boxes */
-                    padding: 0 5%; /* Add padding on the sides */
-                }
-
-                .project-box {
-                    text-align: center; /* Center-align text and links */
-                    padding: 15px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-                    border-radius: 10px;
-                    background-color: #3d5a80;
-                    color: #e0fbfc;
-                }
-
-                .project-box h2 {
-                    font-size: 18px; /* Reduce font size for titles */
-                    margin-bottom: 10px;
-                }
-
-                .project-box label {
-                    font-size: 14px; /* Reduce font size for labels */
-                    display: block;
-                    margin-bottom: 5px;
-                    color: #98c1d9;
-                }
-
-                .project-box .link {
-                    font-size: 20px; /* Adjust icon size */
-                    margin: 0 8px; /* Add spacing between icons */
-                    color: #e0fbfc;
-                    transition: color 0.3s;
-                }
-
-                .project-box .link:hover {
-                    color: #ee6c4d; /* Hover color change for links */
-                }
+                        display: flex;
+                        flex-direction: column; /* Stack project boxes vertically */
+                        align-items: center; /* Center the project boxes */
+                        gap: 20px; /* Add space between project boxes */
+                        padding: 0 5%; /* Add padding on the sides */
+                    }
+                
+                    .project-box {
+                        width: 100%; /* Set full width for each box */
+                        max-width: 500px; /* Optional: Set max width to control size */
+                        text-align: center; /* Center-align text and links */
+                        padding: 15px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+                        border-radius: 10px;
+                        background-color: #3d5a80;
+                        color: #e0fbfc;
+                    }
+                
+                    .project-box h2 {
+                        font-size: 18px; /* Reduce font size for titles */
+                        margin-bottom: 10px;
+                    }
+                
+                    .project-box label {
+                        font-size: 14px; /* Reduce font size for labels */
+                        display: block;
+                        margin-bottom: 5px;
+                        color: #98c1d9;
+                    }
+                
+                    .project-box .link {
+                        font-size: 20px; /* Adjust icon size */
+                        margin: 0 8px; /* Add spacing between icons */
+                        color: #e0fbfc;
+                        transition: color 0.3s;
+                    }
+                
+                    .project-box .link:hover {
+                        color: #ee6c4d; /* Hover color change for links */
+                    }
             }
         /* Style for each footer container */
 
