@@ -595,6 +595,22 @@
                     .project-box .link:hover {
                         color: #ee6c4d; /* Hover color change for links */
                     }
+
+
+        .internship-box h2{
+            font-size: 18px;
+            color: #ee6c4d;
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .internship-box p{
+            font-size: 14px;
+            color: #e0fbfc;
+            margin: 10px;
+            padding: 10px;
+        }
             }
         /* Style for each footer container */
 
