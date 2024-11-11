@@ -596,9 +596,46 @@
                         transition: color 0.3s;
                     }
                 
-                    .project-box .link:hover {
-                        color: #ee6c4d; /* Hover color change for links */
-                    }
+                    .project-box.active .link {
+    display: inline-block;
+    color: #000000;
+    z-index: 2;
+}
+
+.project-box::after,
+.contact-info::after {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    transition: .4s;
+    z-index: 1;
+}
+
+.project-box.active::after,
+.contact-info.active::after {
+    bottom: 0;
+}
+
+.project-box.active h2 {
+    color: #ee6c4d;
+    z-index: 2;
+}
+
+.project-box.active label {
+    display: none;
+    z-index: 2;
+}
+
+.project-box.active a {
+    color: #000000;
+    z-index: 2;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 
 
         .internship-box h2{
