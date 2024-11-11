@@ -365,6 +365,10 @@
             margin: 5px;
         }
 
+        .bottom-nav {
+                display:none;
+        }
+
 @media (max-width: 1200px) {
                 /* Hide the regular navigation links */
                 .nav-links {
