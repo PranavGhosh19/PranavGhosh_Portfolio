@@ -285,5 +285,541 @@
     <script src="./ai/assistant.js"></script>
 
     <script src="script.js"></script>
+
+    <!-- ============================= -->
+    <!-- PRANAV AI ASSISTANT UI -->
+    <!-- ============================= -->
+
+    <!-- Floating AI Button -->
+    <button
+        id="portfolio-ai-launcher"
+        class="portfolio-ai-launcher"
+        type="button"
+        aria-label="Open Pranav AI Assistant"
+        aria-expanded="false"
+    >
+        <span class="ai-launcher-icon">✦</span>
+        <span class="ai-launcher-text">Ask Pranav AI</span>
+    </button>
+
+    <!-- AI Assistant Panel -->
+    <div
+        id="portfolio-ai-panel"
+        class="portfolio-ai-panel"
+        aria-hidden="true"
+    >
+
+        <!-- Header -->
+        <div class="portfolio-ai-header">
+
+            <div class="portfolio-ai-title">
+
+                <div class="portfolio-ai-avatar">
+                    ✦
+                </div>
+
+                <div>
+                    <h3>Pranav AI</h3>
+                    <span>
+                        <span class="ai-status-dot"></span>
+                        Online
+                    </span>
+                </div>
+
+            </div>
+
+            <button
+                id="portfolio-ai-close"
+                class="portfolio-ai-close"
+                type="button"
+                aria-label="Close Pranav AI"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <!-- Messages -->
+        <div
+            id="portfolio-ai-messages"
+            class="portfolio-ai-messages"
+            aria-live="polite"
+        >
+
+            <div class="ai-message ai-message-bot">
+
+                <div class="ai-message-avatar">
+                    ✦
+                </div>
+
+                <div class="ai-message-content">
+                    <p>
+                        Hi! I'm Pranav's AI assistant. 👋
+                    </p>
+
+                    <p>
+                        Ask me about his experience, skills,
+                        projects, current Visa project, or
+                        anything else from his portfolio.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Suggested Questions -->
+
+            <div class="ai-suggestions">
+
+                <button
+                    type="button"
+                    class="ai-suggestion"
+                    data-question="Tell me about Pranav's experience"
+                >
+                    Experience
+                </button>
+
+                <button
+                    type="button"
+                    class="ai-suggestion"
+                    data-question="What are Pranav's key skills?"
+                >
+                    Skills
+                </button>
+
+                <button
+                    type="button"
+                    class="ai-suggestion"
+                    data-question="Tell me about Shadow Analytics"
+                >
+                    Shadow Analytics
+                </button>
+
+                <button
+                    type="button"
+                    class="ai-suggestion"
+                    data-question="What is Pranav currently working on?"
+                >
+                    Current Project
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Voice / Typing Status -->
+        <div
+            id="portfolio-ai-status"
+            class="portfolio-ai-status"
+            aria-live="polite"
+        >
+        </div>
+
+        <!-- Input -->
+        <div class="portfolio-ai-input-area">
+
+            <button
+                id="portfolio-ai-mic"
+                class="portfolio-ai-mic"
+                type="button"
+                aria-label="Ask using voice"
+                title="Ask using voice"
+            >
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+
+            <input
+                id="portfolio-ai-input"
+                type="text"
+                placeholder="Ask me anything..."
+                autocomplete="off"
+                aria-label="Ask Pranav AI"
+            />
+
+            <button
+                id="portfolio-ai-send"
+                class="portfolio-ai-send"
+                type="button"
+                aria-label="Send question"
+                title="Send question"
+            >
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+
+        </div>
+
+        <div class="portfolio-ai-footer">
+            Powered by Pranav's portfolio data
+        </div>
+
+    </div>
+
+    <!-- AI Interface Logic -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const launcher = document.getElementById("portfolio-ai-launcher");
+            const panel = document.getElementById("portfolio-ai-panel");
+            const closeButton = document.getElementById("portfolio-ai-close");
+
+            const input = document.getElementById("portfolio-ai-input");
+            const sendButton = document.getElementById("portfolio-ai-send");
+            const micButton = document.getElementById("portfolio-ai-mic");
+
+            const messages = document.getElementById("portfolio-ai-messages");
+            const status = document.getElementById("portfolio-ai-status");
+
+            let isOpen = false;
+
+            /* =========================
+               OPEN / CLOSE
+            ========================= */
+
+            function openAssistant() {
+
+                isOpen = true;
+
+                panel.classList.add("active");
+                launcher.classList.add("active");
+
+                launcher.setAttribute("aria-expanded", "true");
+                panel.setAttribute("aria-hidden", "false");
+
+                setTimeout(() => {
+                    input.focus();
+                }, 250);
+            }
+
+            function closeAssistant() {
+
+                isOpen = false;
+
+                panel.classList.remove("active");
+                launcher.classList.remove("active");
+
+                launcher.setAttribute("aria-expanded", "false");
+                panel.setAttribute("aria-hidden", "true");
+
+                if (
+                    window.PortfolioAssistant &&
+                    typeof window.PortfolioAssistant.stopSpeaking === "function"
+                ) {
+                    window.PortfolioAssistant.stopSpeaking();
+                }
+            }
+
+            launcher.addEventListener("click", function () {
+
+                if (isOpen) {
+                    closeAssistant();
+                } else {
+                    openAssistant();
+                }
+
+            });
+
+            closeButton.addEventListener("click", closeAssistant);
+
+
+            /* =========================
+               ADD MESSAGE
+            ========================= */
+
+            function addMessage(text, sender = "bot") {
+
+                const message = document.createElement("div");
+
+                message.className =
+                    sender === "user"
+                        ? "ai-message ai-message-user"
+                        : "ai-message ai-message-bot";
+
+                if (sender === "bot") {
+
+                    message.innerHTML = `
+                        <div class="ai-message-avatar">✦</div>
+                        <div class="ai-message-content">
+                            <p></p>
+                        </div>
+                    `;
+
+                    message.querySelector("p").textContent = text;
+
+                } else {
+
+                    message.innerHTML = `
+                        <div class="ai-message-content">
+                            <p></p>
+                        </div>
+                    `;
+
+                    message.querySelector("p").textContent = text;
+                }
+
+                messages.appendChild(message);
+
+                messages.scrollTop = messages.scrollHeight;
+
+                return message;
+            }
+
+
+            /* =========================
+               THINKING INDICATOR
+            ========================= */
+
+            function showThinking() {
+
+                const thinking = document.createElement("div");
+
+                thinking.id = "ai-thinking";
+
+                thinking.className =
+                    "ai-message ai-message-bot ai-thinking-message";
+
+                thinking.innerHTML = `
+                    <div class="ai-message-avatar">✦</div>
+
+                    <div class="ai-thinking-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                `;
+
+                messages.appendChild(thinking);
+
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+
+            function removeThinking() {
+
+                const thinking =
+                    document.getElementById("ai-thinking");
+
+                if (thinking) {
+                    thinking.remove();
+                }
+            }
+
+
+            /* =========================
+               ASK AI
+            ========================= */
+
+            async function askAI(question) {
+
+                question = question.trim();
+
+                if (!question) {
+                    return;
+                }
+
+                addMessage(question, "user");
+
+                input.value = "";
+
+                showThinking();
+
+                status.textContent = "";
+
+                try {
+
+                    if (
+                        !window.PortfolioAssistant ||
+                        typeof window.PortfolioAssistant.ask !== "function"
+                    ) {
+                        throw new Error(
+                            "PortfolioAssistant is not available."
+                        );
+                    }
+
+                    const answer =
+                        await window.PortfolioAssistant.ask(question);
+
+                    removeThinking();
+
+                    addMessage(answer, "bot");
+
+                } catch (error) {
+
+                    console.error(
+                        "Pranav AI Error:",
+                        error
+                    );
+
+                    removeThinking();
+
+                    addMessage(
+                        "Sorry, I couldn't process that question right now.",
+                        "bot"
+                    );
+                }
+
+            }
+
+
+            /* =========================
+               SEND
+            ========================= */
+
+            sendButton.addEventListener("click", function () {
+
+                askAI(input.value);
+
+            });
+
+
+            input.addEventListener("keydown", function (event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    askAI(input.value);
+                }
+
+            });
+
+
+            /* =========================
+               SUGGESTIONS
+            ========================= */
+
+            document
+                .querySelectorAll(".ai-suggestion")
+                .forEach(function (button) {
+
+                    button.addEventListener("click", function () {
+
+                        const question =
+                            button.getAttribute("data-question");
+
+                        askAI(question);
+
+                    });
+
+                });
+
+
+            /* =========================
+               VOICE INPUT
+            ========================= */
+
+            micButton.addEventListener("click", function () {
+
+                if (
+                    !window.PortfolioAssistant ||
+                    typeof window.PortfolioAssistant.startListening !== "function"
+                ) {
+
+                    status.textContent =
+                        "Voice input is not supported in this browser.";
+
+                    return;
+                }
+
+                status.textContent =
+                    "Listening... speak now 🎙️";
+
+                micButton.classList.add("listening");
+
+                window.PortfolioAssistant.startListening({
+
+                    onStart: function () {
+
+                        status.textContent =
+                            "Listening... speak now 🎙️";
+
+                        micButton.classList.add("listening");
+                    },
+
+                    onResult: function (transcript) {
+
+                        input.value = transcript;
+
+                        status.textContent =
+                            "Got it — processing...";
+
+                        micButton.classList.remove("listening");
+
+                        askAI(transcript);
+                    },
+
+                    onEnd: function () {
+
+                        micButton.classList.remove("listening");
+                    },
+
+                    onError: function (error) {
+
+                        console.error(
+                            "Voice error:",
+                            error
+                        );
+
+                        micButton.classList.remove("listening");
+
+                        status.textContent =
+                            "Voice input couldn't be started.";
+                    }
+
+                });
+
+            });
+
+
+            /* =========================
+               AI EVENTS
+            ========================= */
+
+            window.addEventListener(
+                "portfolioAI:listening",
+                function (event) {
+
+                    if (event.detail) {
+
+                        status.textContent =
+                            event.detail.listening
+                                ? "Listening... 🎙️"
+                                : "";
+                    }
+
+                }
+            );
+
+
+            window.addEventListener(
+                "portfolioAI:voiceError",
+                function () {
+
+                    micButton.classList.remove("listening");
+
+                    status.textContent =
+                        "Voice input unavailable.";
+                }
+            );
+
+
+            /* =========================
+               ESC TO CLOSE
+            ========================= */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Escape" &&
+                        isOpen
+                    ) {
+                        closeAssistant();
+                    }
+
+                }
+            );
+
+        });
+    </script>
 </body>
 </html>
