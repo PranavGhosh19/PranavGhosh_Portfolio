@@ -1,0 +1,206 @@
+{
+  "profile": {
+    "name": "Pranav Ghosh",
+    "title": "Consultant | Data & Analytics",
+    "summary": "Data and analytics professional with experience across data analysis, business intelligence, data engineering, automation, and AI-driven solutions.",
+    "location": "Delhi, India",
+    "availability": "Immediate Joiner",
+    "relocation": true
+  },
+
+  "experience": [
+    {
+      "company": "Boston Consulting Group (BCG)",
+      "role": "Consultant",
+      "duration": "2.6 years",
+      "domains": [
+        "Banking & Finance",
+        "Retail"
+      ],
+      "responsibilities": [
+        "Data analysis and decision support",
+        "Business intelligence and dashboard development",
+        "Stakeholder and CXO communication",
+        "Requirements gathering and solution design",
+        "Data validation and ETL",
+        "Automation and reporting optimization"
+      ],
+      "technologies": [
+        "SQL",
+        "Python",
+        "Power BI",
+        "Tableau",
+        "Excel",
+        "Power Query",
+        "VBA",
+        "Power Apps",
+        "SharePoint",
+        "Copilot Studio"
+      ]
+    },
+    {
+      "company": "GlobalLogic",
+      "role": "Associate Analyst",
+      "clients": [
+        "Wood Mackenzie",
+        "Continuous"
+      ],
+      "responsibilities": [
+        "Market and financial research",
+        "Financial data analysis",
+        "Data extraction and validation",
+        "Document intelligence and automation",
+        "OCR and LLM-based information extraction"
+      ],
+      "technologies": [
+        "Python",
+        "SQL",
+        "Excel",
+        "Power Query",
+        "VBA",
+        "Tesseract OCR",
+        "LLMs"
+      ]
+    }
+  ],
+
+  "current_project": {
+    "client": "Visa",
+    "area": "Data Engineering & BI",
+    "tools": [
+      "Power BI",
+      "Tableau",
+      "SQL"
+    ],
+    "work": [
+      "Extracting KPIs from Tableau workbooks",
+      "Testing feasibility against source-to-target mappings",
+      "Validating source columns against target columns",
+      "Working with STDMs and CDEs",
+      "Identifying infeasible data mappings",
+      "Discussing mapping issues with stakeholders"
+    ]
+  },
+
+  "projects": [
+    {
+      "name": "Shadow Analytics",
+      "type": "AI Document Intelligence",
+      "description": "AI-powered document intelligence platform that extracts structured information from documents using OCR and LLMs.",
+      "technologies": [
+        "Python",
+        "Tesseract OCR",
+        "Gemini",
+        "LLMs",
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Firebase",
+        "Firestore"
+      ],
+      "features": [
+        "Scanned PDF processing",
+        "OCR-based extraction",
+        "User-defined fields and instructions",
+        "Structured data extraction",
+        "Confidence scores",
+        "Bounding boxes",
+        "Excel export",
+        "Decision engine"
+      ]
+    },
+    {
+      "name": "Wisely",
+      "type": "Personal Finance Application",
+      "description": "A personal finance and expense-sharing application designed as an enhanced alternative to traditional expense-splitting applications.",
+      "technologies": [
+        "Next.js",
+        "Firebase",
+        "Capacitor",
+        "Vercel"
+      ],
+      "features": [
+        "Expense splitting",
+        "Budget tracking",
+        "Net position",
+        "Alerts",
+        "QR-based group joining",
+        "Offline caching"
+      ]
+    }
+  ],
+
+  "skills": {
+    "data_analytics": [
+      "Advanced Excel",
+      "SQL",
+      "Python",
+      "EDA",
+      "Statistical Analysis",
+      "Data Cleaning",
+      "Data Validation"
+    ],
+    "business_intelligence": [
+      "Power BI",
+      "DAX",
+      "Star Schema",
+      "Row-Level Security",
+      "Tableau"
+    ],
+    "programming": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn"
+    ],
+    "machine_learning": [
+      "Regression",
+      "Classification",
+      "Clustering",
+      "Feature Engineering",
+      "Feature Selection",
+      "Model Evaluation",
+      "Hyperparameter Tuning"
+    ],
+    "genai": [
+      "LLMs",
+      "RAG",
+      "Prompt Engineering",
+      "OCR",
+      "AI Agents",
+      "Copilot Studio"
+    ],
+    "data_engineering": [
+      "ETL",
+      "Data Modelling",
+      "Data Validation",
+      "Query Optimization",
+      "REST APIs",
+      "Git"
+    ]
+  },
+
+  "education": [
+    {
+      "degree": "M.Sc. Data Science",
+      "institution": "Christ University"
+    }
+  ],
+
+  "certifications": [
+    "Microsoft Certified: Power BI Data Analyst Associate"
+  ],
+
+  "languages": [
+    "English",
+    "Hindi",
+    "Bengali",
+    "Kannada"
+  ],
+
+  "contact": {
+    "website": "https://pranavghosh19.github.io/PranavGhosh_Portfolio/",
+    "github": "https://github.com/PranavGhosh19/PranavGhosh_Portfolio"
+  }
+}
